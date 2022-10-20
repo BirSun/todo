@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h1>Redigera Lista</h1>
+ <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css'>
+
+     <br/>
+    <br/><br/>
+<div class="shadow mb-5 p-3 bg-body rounded">
+    <form action="/edit_lista/{{ name_to_update.id }}" method="POST">
+
+       {{ form.hidden_tag() }}
+
+		{{ form.name.label(class="form-label") }}
+        {{ form.name(class="form-control", value=name_to_update.name) }}
+
+
+        {{ form.info.label(class="form-label") }}
+
+		{{ form.info(class="form-control", value=name_to_update.info) }}
+
+         {{ form.category.label(class="form-label") }}
+
+		{{ form.category(class="form-control", value=name_to_update.category) }}<br>
+
+
+
+        {{ form.submit(class="btn btn-secondary btn-sm") }} &nbsp &nbsp &nbsp <a href="{{ url_for('lista')}}" class="btn btn-primary btn-sm">Tillbaka</a></span></a>
+
+    </form>
+</div>
+
+
+ {%endblock%}

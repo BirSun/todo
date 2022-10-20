@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css'>
+
+            <body>
+
+            </body>
+</html>
+
+
+</head>
+<body>
+<h1>Listor!</h1>
+<br>
+
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalOne">
+  Ny Lista</button>
+
+<table class="table table-hover table-bordered table-striped">
+
+
+    <thead>
+    <tr>
+                <th class="col-sm-1">Redigera</th>
+                <th class="col-sm-1">Delete</th>
+                <th class="col-sm-1">#</th>
+                <th class="col-sm-5">Lista</th>
+                <th class="col-sm-3">Info</th>
+                <th class="col-sm-3">Kategori</th>
+                <th class="col-sm-1">Visa</th>
+
+    </tr>
+    </thead>
+
+
+{% for our_list in our_lists %}
+
+
+            <div class="form-check">
+
+                <td><a href="{{ url_for('edit_lista', id=our_list.id) }}"><button type="button" class="btn btn-link"><span class='bi bi-pencil-square' style='font-size:22px;'></span></button></a></td>
+            <td><a href="{{ url_for('delete_all', id=our_list.id) }}"><button type="button" class="btn btn-link"><span class="bi bi-trash-fill" style='font-size:20px;'></span></button></a></td>
+            <!--<a href="{{ url_for('delete', id=our_list.id) }}">Delete</a><label class="form-check-label" for="DefaultCheckbox2"><label/>-->
+            <td>{{our_list.id}}</td><td>{{our_list.name}}</td><td>{{our_list.info}}</td><td>{{our_list.category}}</td>
+
+            <td><a href="{{ url_for('add_post', id=our_list.id, namn=our_list.name) }}">...</a><label class="form-check-label"label/>
+
+            </div>
+         </td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+
+<div class="modal" id="modalOne" tabindex="-1" aria-hidden="true" aria-hidden="true">
+
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+         <div class="contact-form">
+
+
+             <form action="{{ url_for('lista') }}" method="POST">
+             <h2>Lägg till ny lista</h2>
+
+                <div class="modal-body">
+
+                  <input class="name shadow-sm bg-body rounded" type="name" name="name" placeholder="namn" />
+
+                  <input class="category shadow-sm bg-body rounded" type="text" name="info" placeholder="info" />
+                     <input class="info shadow-sm bg-body rounded" type="text" name="category" placeholder="kategori" />
+                </div>
+                 <div class="modal-footer">
+                     <button class="but bg-body rounded" type="submit" href="/">Lägg till</button>
+                     <button type="button" class="btn-float-right" data-bs-dismiss="modal">Stäng</button>
+                 </div>
+            </form>
+        </div>
+      </div>
+    </div>
+</div>
+<style>
+    #modalOne{
+margin-left: 300px;
+}
+<style>
+
+ .bs-example{
+    	margin: 20px;
+    }
+input,
+      textarea {
+
+        width: 98%;
+        padding: 10px;
+                margin-right: 10px;
+                margin-left: 10px;
+                margin-bottom: 15px;
+        border: 1px solid #1c87c9;
+        outline: none;
+      }
+
+
+form {
+        color: darkblue;
+
+        background: #eee;
+
+   }
+h2,
+      p {
+        margin: 20px;
+        font-weight: 400;
+        color: darkblue;
+      }
+
+.modal-content {
+        margin: 20px auto;
+        border: 1px solid #999;
+        width: 100%;
+
+}
+form {
+
+        box-shadow: 0 2px 5px #f5f5f5;
+        background: #eee;
+   }
+
+
+
+</style>
+
+
+
+
+</body>
+</html>
+
+{% endblock %}

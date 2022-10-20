@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block content %}
+{% for message in get_flashed_messages() %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+ <link href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css' rel='stylesheet'>
+ <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+       {{ message }}
+       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+{% endfor %}
+
+
+<div class="shadow mb-5 p-3 bg-body rounded">
+    <form method="POST">
+       {{ form.hidden_tag() }}
+
+		{{ form.name.label(class="form-label") }}
+
+		{{ form.name(class="form-control") }}
+
+
+        {{ form.info.label(class="form-label") }}
+
+		{{ form.info(class="form-control") }}
+
+         {{ form.category.label(class="form-label") }}
+
+		{{ form.category(class="form-control") }}
+
+
+        {{ form.submit(class="btn btn-secondary") }}
+    </form>
+</div>
+
+<table  class = "table table-borderd table-hover th-sm">
+<h1>{{ namn }}</h1>
+
+    <tbody>
+
+     {% for post in posts %}
+     {% if post.done == True %}
+    <tr>
+        <td><input type="checkbox" class="checkmark" checked="checked" onclick="window.location.href='/complete/{{ post.id }}';"  id="DefaultCheckbox2" name="done"></td>
+        <label class="form-check-label" for="DefaultCheckbox2"><label/>
+        <td>{{ post.id }}. - {{ post.name }} - {{ post.info }} - {{ post.category}} {{ post.poster_id}} - {{ post.done}}</td>
+
+        <td><a href="{{ url_for('delete_post', id=post.id) }}">Del</a><label class="form-check-label"label/></td>
+ </tr>
+     {% else %}
+ <tr>
+         <label class="form-check-label" for="DefaultCheckbox"><label/>
+        <td><input type="checkbox" class="checkmark" onclick="window.location.href='/complete_false/{{ post.id }}';"  id="DefaultCheckbox" name="done"></td>
+        <td>{{ post.id }}. - {{ post.name }} - {{ post.info }} - {{ post.category}} {{ post.poster_id}} - {{ post.done}}</td>
+
+        <td><a href="{{ url_for('delete_post', id=post.id) }}">Del</a><label class="form-check-label"label/></td>
+
+    </tr>
+
+
+    </tbody>
+    {% endif %}
+    {% endfor %}
+</table>
+
+
+
+{% endblock %}
+
+

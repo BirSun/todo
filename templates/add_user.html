@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block content %}
+{% for message in get_flashed_messages() %}
+   <div class="alert alert-success alert-dismissible fade show" role="alert">
+       {{ message }}
+
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+{% endfor %}
+{% if name %}
+    <h1>Post Added!</h1>
+     <br/>
+    <br/><br/>
+<table class="table table-hover table-bordered table-striped">
+
+    {% for our_list in our_lists %}
+	<tr>
+	<td>{{ our_list.id }}. {{ our_list.name }} - {{ our_list.info }}- {{ our_list.category }}
+    </td>
+	</tr>
+{% endfor %}
+</table>
+{% else %}
+    <h1>User List:</h1>
+    <br/>
+
+<div class="shadow mb-5 p-3 bg-body rounded">
+    <form method="POST">
+       {{ form.hidden_tag() }}
+
+		{{ form.name.label(class="form-label") }}
+
+		{{ form.name(class="form-control") }}
+
+
+        {{ form.info.label(class="form-label") }}
+
+		{{ form.info(class="form-control") }}
+
+         {{ form.category.label(class="form-label") }}
+
+		{{ form.category(class="form-control") }}
+
+
+        {{ form.submit(class="btn btn-secondary") }}
+    </form>
+</div>
+
+<table  class = "table table-borderd table-hover th-sm">
+
+    <tbody>
+    {% for our_list in our_lists %}
+    <tr>
+        <td>{{ our_list.id }}. {{ our_list.name }} - {{ our_list.info }}- {{our_list.category}}
+
+
+    </tr>
+    </tbody>
+{% endfor %}
+</table>
+
+{% endif %}
+
+{% endblock %}
+
+
+
+
+
+
+
+</style>
+
+
+

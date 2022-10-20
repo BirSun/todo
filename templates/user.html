@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Hello {{name|title}}</h1>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalOne">
+  Lägg till post</button>
+
+
+<!-- Modal -->
+<div class="modal fade" id="modalOne" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+         <div class="contact-form">
+             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+    <h5 class="modal-title" id="exampleModalLabel">Lägg till post</h5>
+
+      </div>
+      <div class="modal-body">
+
+              <input class="fname shadow-sm bg-body rounded" type="name" name="name" placeholder="Kategori" />
+              <input class="email shadow-sm bg-body rounded" type="text" name="email" placeholder="Post" />
+              <input class="favorite_color shadow-sm bg-body rounded" type="text" name="favorite_color" placeholder="Färg" />
+
+
+      </div>
+
+        <div class="modal-footer">
+<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Stäng</button>
+        <button type="button" class="btn btn-primary">Spara</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</body>
+</html>
+
+{% endblock %}

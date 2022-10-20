@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+
+<table  class = "table table-borderd table-hover th-sm">
+<h2>
+    {{ name }}
+</h2>
+    <tbody>
+    {% for post in posts %}
+
+
+
+
+    <tr>
+        <td>{{ post.id }} - {{ post.name }} - {{ post.info }} - {{ post.category}} - {{ post.poster_id}}
+
+    </tr>
+    </tbody>
+
+    {% endfor %}
+
+</table>
+
+{% endblock %}
+
